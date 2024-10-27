@@ -1,0 +1,19 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+div[data-slot="panel"] {
+    display: none;
+}
+
+html {
+    --cursor-color: #fff
+  }
+  
+  html.dark-mode {
+    --cursor-color: #fff
+  }
+
+  html, body {
+    cursor: auto; /* Ensures the system cursor is visible */
+  }

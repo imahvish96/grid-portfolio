@@ -1,0 +1,13 @@
+div#tabs > div[data-slot="tabList"] {
+    height: 100%;
+    width: 100%;
+}
+
+div#tabs > div[data-slot="tabList"] > button{
+    height: 100%;
+    width: 100%;
+}
+
+.tab-photos > div[data-slot="tabContent"] {
+    width: 30%;
+}
