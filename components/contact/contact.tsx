@@ -1,18 +1,28 @@
 "use client";
 
-import React from "react";
+import React, { useEffect, useState } from "react";
 // import MyComponent from "../components/MyComponent";
 import Marquee from "react-fast-marquee";
 import { Card, CardBody, CardFooter, Image } from "@nextui-org/react";
 import { GoNorthStar } from "react-icons/go";
+import { useTheme } from "next-themes";
 
-const Skills = () => (
-  <Card className="h-full">
-    <Marquee gradient gradientWidth={80} gradientColor={"#18181b"}>
-      <SkillCard />
-    </Marquee>
-  </Card>
-);
+const Skills = () => {
+  const { theme } = useTheme();
+  const [themeShadow, setThemeShadow] = useState<string>();
+
+  useEffect(() => {
+    console.log(theme);
+    theme === "dark" ? setThemeShadow("#18181b") : setThemeShadow("#fff");
+  }, [theme]);
+  return (
+    <Card isBlurred className="h-full border-none bg-background/60 dark:bg-default-100/50">
+      <Marquee gradient gradientWidth={80} gradientColor={themeShadow}>
+        <SkillCard />
+      </Marquee>
+    </Card>
+  );
+};
 
 export default Skills;
 

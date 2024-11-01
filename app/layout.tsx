@@ -8,12 +8,9 @@ import { Providers } from "./providers";
 
 import { siteConfig } from "@/config/site";
 import { fontSans } from "@/config/fonts";
-import { BackgroundGradientAnimation } from "@/components/ui/background-gradient-animation";
-import { AuroraBackground } from "@/components/ui/aurora-background";
-import { BackgroundLines } from "@/components/ui/background-lines";
-import { BackgroundBeams } from "@/components/ui/background-beams";
-import { SparklesCore } from "@/components/ui/sparkles";
 import { BackgroundBeamsWithCollision } from "@/components/ui/background-beams-with-collision";
+import CustomCursor from "@/components/customCursor";
+import { BackgroundBeams } from "@/components/ui/background-beams";
 
 export const metadata: Metadata = {
   title: {
@@ -36,17 +33,39 @@ export const viewport: Viewport = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html suppressHydrationWarning lang="en">
-      <head />
+      <head>
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+        <link href="https://fonts.googleapis.com/css2?family=Didact+Gothic&family=Roboto&display=swap" rel="stylesheet" />
+      </head>
       <body className={clsx("min-h-screen bg-background font-sans antialiased", fontSans.variable)}>
         <Providers themeProps={{ attribute: "class", defaultTheme: "dark" }}>
           <BackgroundBeamsWithCollision className="w-full h-full">
+            <div aria-hidden="true" className="fixed hidden dark:md:block dark:opacity-70 -bottom-[40%] -left-[20%] z-0">
+              <img
+                src="/background/docs-left.png"
+                className="relative z-10 opacity-0 shadow-black/5 data-[loaded=true]:opacity-100 shadow-none transition-transform-opacity motion-reduce:transition-none !duration-300 rounded-large"
+                alt="docs left background"
+                data-loaded="true"
+              />
+              <div
+                aria-hidden="true"
+                className="fixed hidden dark:md:block dark:opacity-70 -top-[80%] -right-[60%] 2xl:-top-[60%] 2xl:-right-[45%] z-0 rotate-12">
+                <img
+                  src="/background/docs-right.png"
+                  className="relative z-10 opacity-0 shadow-black/5 data-[loaded=true]:opacity-100 shadow-none transition-transform-opacity motion-reduce:transition-none !duration-300 rounded-large"
+                  alt="docs right background"
+                  data-loaded="true"
+                />
+              </div>
+            </div>
             <div
               className="fixed inset-0 w-full h-full opacity-10 pointer-events-none"
               style={{
                 backgroundSize: "50px 50px",
                 backgroundImage: `
-              linear-gradient(to right, currentColor 1px, transparent 1px),
-              linear-gradient(to bottom, currentColor 1px, transparent 1px)
+              linear-gradient(to right, #636363 1px, transparent 1px),
+              linear-gradient(to bottom, #636363 1px, transparent 1px)
             `,
                 maskImage: `linear-gradient(to bottom, 
               transparent, 
@@ -76,7 +95,52 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
                   outerStyle={{
                     border: "3px solid var(--cursor-color)"
                   }}
+                  clickables={[
+                    {
+                      target: ".exp-one",
+                      outerStyle: {
+                        background: "url(/cursor/gsynergy.jpeg)", // Soft blue background
+                        backgroundRepeat: "no-repeat",
+                        backgroundSize: "100% 100%",
+                        backgroundPosition: "center"
+                      },
+                      outerScale: 1.5, // Increase size on hover
+                      innerScale: 0.5, // Slightly increase inner cursor,
+                      innerSize: 0
+                    },
+                    {
+                      target: ".exp-two",
+                      outerStyle: {
+                        background: "url(/cursor/misemind.png)", // Soft blue background
+                        backgroundRepeat: "no-repeat",
+                        backgroundSize: "contain",
+                        backgroundPosition: "center",
+                        overflow: "visible",
+                        borderRadius: "0px"
+                      },
+                      outerScale: 1.5, // Increase size on hover
+                      innerScale: 0.5, // Slightly increase inner cursor,
+                      innerSize: 0
+                    },
+                    {
+                      target: ".exp-three",
+                      outerStyle: {
+                        background: "url(/cursor/al_cursor.png)", // Soft blue background
+                        backgroundRepeat: "no-repeat",
+                        backgroundSize: "contain",
+                        backgroundPosition: "center",
+                        overflow: "visible",
+                        borderRadius: "0px",
+                        width: "100%",
+                        objectFit: "contain"
+                      },
+                      outerScale: 1.5, // Increase size on hover
+                      innerScale: 0.5, // Slightly increase inner cursor,
+                      innerSize: 0
+                    }
+                  ]}
                 />
+                <CustomCursor />
               </div>
               {/* <BackgroundBeams /> */}
             </div>

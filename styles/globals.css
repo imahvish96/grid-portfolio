@@ -10,10 +10,28 @@ html {
     --cursor-color: #fff
   }
   
-  html.dark-mode {
+html.dark-mode {
     --cursor-color: #fff
   }
 
   html, body {
     cursor: auto; /* Ensures the system cursor is visible */
+    font-family: "Didact Gothic", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+  }
+
+  .react-grid-item.react-grid-placeholder { 
+    z-index: 0 !important;
+    background-color: transparent !important;
+  }
+
+  .react-grid-item-dragging {
+    background-color: transparent !important;
+    opacity: 0 !important;
+  }
+
+  .react-grid-item {
+    background-color: transparent !important;
+    z-index: 1 !important;
   }

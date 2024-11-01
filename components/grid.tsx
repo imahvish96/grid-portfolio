@@ -7,8 +7,6 @@ import "react-resizable/css/styles.css";
 import { Contact, About, Github, Email, Linkedin, Twitter, Toggler, Skills, Project, Experence, Resume } from "./";
 import Cards from "./ui/card";
 import { Tab, Tabs } from "@nextui-org/react";
-import { HeroHighlight, Highlight } from "@/components/ui/hero-highlight";
-import { motion } from "framer-motion";
 
 const MyGridLayout = () => {
   const layout = [
@@ -43,7 +41,7 @@ const MyGridLayout = () => {
         cols={12} // Defining 12 columns for the grid
         rowHeight={30} // Each row height is 30px
         width={1200} // Total width of the layout in pixels
-      >
+        isResizable={false}>
         <div key="about">
           <About />
         </div>

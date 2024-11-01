@@ -5,7 +5,7 @@ import { FiDownload } from "react-icons/fi";
 
 export default function Cards() {
   return (
-    <Card className="py-4 h-full">
+    <Card isBlurred className="py-4 h-full border-none bg-background/60 dark:bg-default-100/50">
       <CardBody className="px-8">
         <div className="flex justify-between">
           <div>

@@ -3,8 +3,10 @@ import { IoMailOpenOutline } from "react-icons/io5";
 
 export default function GithubCardIcon() {
   return (
-    <Card className="py-4 h-full">
-      <IoMailOpenOutline className="w-full h-[100%]" />
+    <Card isBlurred className="py-4 h-full border-none bg-background/60 dark:bg-default-100/50">
+      <div className="flex justify-center items-center h-full">
+        <IoMailOpenOutline className="w-[85%] h-[85%]" />
+      </div>
     </Card>
   );
 }

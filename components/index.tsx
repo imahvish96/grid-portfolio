@@ -9,3 +9,4 @@ export { default as Skills } from "./skills/skills";
 export { default as Project } from "./project/projext";
 export { default as Experence } from "./exprience/exprience";
 export { default as Resume } from "./resume/resume";
+export { default as AnimatedCursor } from "./customCursor";
