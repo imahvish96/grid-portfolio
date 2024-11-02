@@ -47,7 +47,8 @@ const CursorFollower = () => {
           top: followerPosition.y,
           left: followerPosition.x,
           translate: "-50% -50%", // Centering the div
-          transform: "rotate(360deg)"
+          transform: "rotate(360deg)",
+          zIndex: -1
         }}
         animate={{
           y: [0, -10, 0], // Floating effect

@@ -6,8 +6,8 @@ export default function Experence() {
       <CardBody className="py-2">
         <p className="text-default-500 mt-3 text-small uppercase">4 Years of</p>
         <h2 className="font-bold text-xl uppercase mt-3">experience</h2>
-        <div className="mt-12">
-          <div className="flex justify-between mb-12 exp-one">
+        <div>
+          <div className="flex justify-between my-12 exp-one">
             <h1 className="text-3xl">Software Engineer</h1>
             <div className="text-right">
               <p>GSynergy India</p>

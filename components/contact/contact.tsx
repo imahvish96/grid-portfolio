@@ -30,7 +30,7 @@ function SkillCard() {
   const list = [
     {
       title: "Hey There",
-      content: "Welcome to my portfolio – where creativity meets code, and passion turns into digital solutions!"
+      content: "WELCOME TO MY PORTFOLIO– WHERE CREATIVITY MEETS CODING, AND PASSION TURNS INTO DIGITAL SOLUTIONS!."
     },
     {
       title: "Country",

@@ -96,6 +96,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
                     border: "3px solid var(--cursor-color)"
                   }}
                   clickables={[
+                    "a",
                     {
                       target: ".exp-one",
                       outerStyle: {

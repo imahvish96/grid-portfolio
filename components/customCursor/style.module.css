@@ -3,7 +3,7 @@
     height: 400px; /* Size of the follower */
     border-radius: 50%;
     background: linear-gradient(45deg, rgba(255, 0, 255, 0.7), rgba(0, 255, 255, 0.7));
-    filter: blur(30px); /* Add blur effect */
+    filter: blur(40px); /* Add blur effect */
     pointer-events: none; /* Avoid interference with mouse events */
   }
   

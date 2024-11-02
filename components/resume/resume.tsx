@@ -12,10 +12,9 @@ export default function Cards() {
             <small className="text-default-500">2024 CV</small>
             <h4 className="font-bold text-large">Resume</h4>
           </div>
-
-          <div className="flex gap-10">
-            <FiDownload className="w-full h-[100%]" />
-            <FiEye className="w-full h-[100%]" />
+          <div className="flex items-center h-full gap-10">
+            <FiDownload className="w-[60%] h-[60%]" />
+            <FiEye className="w-[60%] h-[60%]" />
           </div>
         </div>
       </CardBody>
