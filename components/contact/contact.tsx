@@ -1,7 +1,6 @@
 "use client";
 
 import React, { useEffect, useState } from "react";
-// import MyComponent from "../components/MyComponent";
 import Marquee from "react-fast-marquee";
 import { Card, CardBody, CardFooter, Image } from "@nextui-org/react";
 import { GoNorthStar } from "react-icons/go";
@@ -15,6 +14,7 @@ const Skills = () => {
     console.log(theme);
     theme === "dark" ? setThemeShadow("#18181b") : setThemeShadow("#fff");
   }, [theme]);
+
   return (
     <Card isBlurred className="h-full border-none bg-background/60 dark:bg-default-100/50">
       <Marquee gradient gradientWidth={80} gradientColor={themeShadow}>
@@ -48,8 +48,8 @@ function SkillCard() {
 
   return (
     <div className="flex gap-2 mt-1">
-      {list.map((item, index) => (
-        <div key={index} className="flex items-center gap-2">
+      {list.map(item => (
+        <div key={item.title} className="flex items-center gap-2">
           <div className="flex gap-2">
             <p className="font-bold">{item.title}: </p>
             <p>{item.content}</p>
