@@ -49,7 +49,7 @@ function SkillCard() {
   return (
     <div className="flex gap-2 mt-1">
       {list.map((item, index) => (
-        <div className="flex items-center gap-2">
+        <div key={index} className="flex items-center gap-2">
           <div className="flex gap-2">
             <p className="font-bold">{item.title}: </p>
             <p>{item.content}</p>
