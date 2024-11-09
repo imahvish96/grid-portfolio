@@ -23,8 +23,8 @@ export default function App({ className, classNames }: any) {
           key="light"
           className={Styles["tab-photos"]}
           title={
-            <div className="flex items-center justify-center w-full h-full">
-              <IoSunnyOutline className="w-full h-full" />
+            <div className="flex items-center justify-center w-full h-full sunny">
+              <IoSunnyOutline className="w-[75%] h-[75%]" />
             </div>
           }
         />
@@ -32,8 +32,8 @@ export default function App({ className, classNames }: any) {
           key="dark"
           className={Styles["tab-photos"]}
           title={
-            <div className="flex items-center justify-center w-full h-full">
-              <HiOutlineMoon className="w-full h-full" />
+            <div className="flex items-center justify-center w-full h-full moon">
+              <HiOutlineMoon className="w-[70%] h-[70%]" />
             </div>
           }
         />

@@ -1,5 +1,5 @@
-import { Card, CardHeader, CardBody, Image } from "@nextui-org/react";
-import { TiDownload } from "react-icons/ti";
+import { Card, CardBody } from "@nextui-org/react";
+
 import { FiEye } from "react-icons/fi";
 import { FiDownload } from "react-icons/fi";
 

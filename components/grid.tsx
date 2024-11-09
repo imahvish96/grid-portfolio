@@ -21,8 +21,8 @@ const MyGridLayout = () => {
     { i: "github", x: 0, y: 7, w: 2, h: 3 }, // Bottom left block
     { i: "experience", x: 6, y: 9, w: 6, h: 11 }, // Bottom right block
     { i: "email", x: 2, y: 9, w: 4, h: 3 }, // Bottom right block
-    { i: "project", x: 0, y: 10, w: 6, h: 13 }, // Bottom right block
-    { i: "14", x: 7, y: 11, w: 6, h: 13 } // Bottom right block
+    { i: "project", x: 0, y: 10, w: 6, h: 8 }, // Bottom right block
+    { i: "14", x: 7, y: 11, w: 6, h: 8 } // Bottom right block
   ];
 
   const aboutLayout = [
@@ -37,16 +37,16 @@ const MyGridLayout = () => {
     { i: "mode", x: 8, y: 5, w: 5, h: 3 }, // Small top-right block
     { i: "cv", x: 8, y: 5, w: 5, h: 3 }, // Small below top-right block
     { i: "experience", x: 6, y: 9, w: 6, h: 11 }, // Bottom right block
-    { i: "project", x: 0, y: 10, w: 6, h: 13 }, // Bottom right block
-    { i: "14", x: 7, y: 11, w: 6, h: 13 } // Bottom right block
+    { i: "project", x: 0, y: 10, w: 6, h: 8 }, // Bottom right block
+    { i: "14", x: 7, y: 11, w: 6, h: 8 } // Bottom right block
   ];
   const workLayout = [
     { i: "experience", x: 0, y: 0, w: 6, h: 11 }, // Bottom right block
     { i: "cv", x: 6, y: 0, w: 6, h: 3 }, // Small below top-right block
     { i: "mode", x: 6, y: 0, w: 6, h: 3 }, // Small top-right block
     { i: "14", x: 7, y: 1, w: 6, h: 8 }, // Bottom right block
-    { i: "project", x: 0, y: 2, w: 6, h: 8 }, // Bottom right block
-    { i: "about", x: 6, y: 2, w: 6, h: 5 }, // Big block at top left
+    { i: "project", x: 0, y: 2, w: 6, h: 9 }, // Bottom right block
+    { i: "about", x: 6, y: 2, w: 6, h: 6 }, // Big block at top left
     { i: "linkedin", x: 0, y: 3, w: 2, h: 3 }, // Two small blocks on the left
     { i: "github", x: 2, y: 3, w: 2, h: 3 }, // Bottom left block
     { i: "twitter", x: 0, y: 3, w: 2, h: 4 }, // Small block below left one
