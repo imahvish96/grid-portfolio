@@ -2,7 +2,7 @@
 
 import React, { useEffect, useState } from "react";
 import Marquee from "react-fast-marquee";
-import { Card, CardBody, CardFooter, Image } from "@nextui-org/react";
+import { Card } from "@nextui-org/react";
 import { GoNorthStar } from "react-icons/go";
 import { useTheme } from "next-themes";
 
@@ -38,11 +38,11 @@ function SkillCard() {
     },
     {
       title: "Email",
-      content: "sZ9kA@example.com"
+      content: "faridi.mahvish@gmail.com"
     },
     {
       title: "Phone",
-      content: "1234567890"
+      content: "Please Prefer Email"
     }
   ];
 

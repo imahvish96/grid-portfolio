@@ -5,6 +5,7 @@ import { myExprience } from "@/config/resume";
 
 export default function Experence() {
   const exp = ["exp-one", "exp-two", "exp-three"];
+
   return (
     <Card isBlurred className="py-4 px-4 h-full bg-background/60 dark:bg-default-100/50">
       <CardBody className="py-2">
@@ -21,23 +22,30 @@ export default function Experence() {
             </div>
           ))} */}
           <div className="flex justify-between my-12 exp-one">
-            <h1 className="text-3xl font-semibold">Software Engineer</h1>
+            <h1 className="text-3xl font-semibold">SDE-II</h1>
             <div className="text-right">
-              <p>GSynergy India</p>
-              <small className="text-default-500 mt-3 text-small">2023-Present</small>
+              <p>Amiti Software Technologies</p>
+              <small className="text-default-500 mt-3 text-small">2024-Present</small>
             </div>
           </div>
-          <div className="flex justify-between mb-12 exp-two">
+          <div className="flex justify-between my-12 exp-two">
+            <h1 className="text-3xl line-through text-slate-500 font-semibold">Software Engineer</h1>
+            <div className="text-right">
+              <p>GSynergy India</p>
+              <small className="text-default-500 mt-3 text-small">2023-2024</small>
+            </div>
+          </div>
+          <div className="flex justify-between mb-12 exp-three">
             <h1 className="text-3xl line-through text-slate-500 font-semibold">Software Developer</h1>
             <div className="text-right">
               <p>Misemind Tech.</p>
               <small className="text-default-500 mt-3 text-small">2020-2023</small>
             </div>
           </div>
-          <div className="flex justify-between exp-three">
+          <div className="flex justify-between exp-four">
             <h1 className="text-3xl line-through text-slate-500 font-semibold">Jr. Software Developer</h1>
             <div className="text-right">
-              <p>Alienskart Web </p>
+              <p>Alienskart Web</p>
               <small className="text-default-500 mt-3 text-small">2019-2020</small>
             </div>
           </div>

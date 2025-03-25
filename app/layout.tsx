@@ -1,3 +1,4 @@
+/* eslint-disable react/jsx-sort-props */
 import "@/styles/globals.css";
 import { Metadata, Viewport } from "next";
 import AnimatedCursor from "react-animated-cursor";
@@ -10,7 +11,6 @@ import { siteConfig } from "@/config/site";
 import { fontSans } from "@/config/fonts";
 import { BackgroundBeamsWithCollision } from "@/components/ui/background-beams-with-collision";
 import CustomCursor from "@/components/customCursor";
-import { BackgroundBeams } from "@/components/ui/background-beams";
 
 export const metadata: Metadata = {
   title: {
@@ -43,10 +43,10 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           <BackgroundBeamsWithCollision className="w-full h-full">
             <div aria-hidden="true" className="fixed hidden dark:md:block dark:opacity-70 -bottom-[40%] -left-[20%] z-0">
               <img
-                src="/background/docs-left.png"
-                className="relative z-10 opacity-0 shadow-black/5 data-[loaded=true]:opacity-100 shadow-none transition-transform-opacity motion-reduce:transition-none !duration-300 rounded-large"
                 alt="docs left background"
+                className="relative z-10 opacity-0 shadow-black/5 data-[loaded=true]:opacity-100 shadow-none transition-transform-opacity motion-reduce:transition-none !duration-300 rounded-large"
                 data-loaded="true"
+                src="/background/docs-left.png"
               />
               <div
                 aria-hidden="true"
@@ -100,7 +100,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
                     {
                       target: ".exp-one",
                       outerStyle: {
-                        background: "url(/cursor/gsynergy.jpeg)", // Soft blue background
+                        background: "url(/cursor/amiti_cursor.jpeg)", // Soft blue background
                         backgroundRepeat: "no-repeat",
                         backgroundSize: "100% 100%",
                         backgroundPosition: "center"
@@ -112,12 +112,10 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
                     {
                       target: ".exp-two",
                       outerStyle: {
-                        background: "url(/cursor/misemind.png)", // Soft blue background
+                        background: "url(/cursor/gsynergy.jpeg)", // Soft blue background
                         backgroundRepeat: "no-repeat",
-                        backgroundSize: "contain",
-                        backgroundPosition: "center",
-                        overflow: "visible",
-                        borderRadius: "0px"
+                        backgroundSize: "100% 100%",
+                        backgroundPosition: "center"
                       },
                       outerScale: 1.5, // Increase size on hover
                       innerScale: 0.5, // Slightly increase inner cursor,
@@ -125,6 +123,18 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
                     },
                     {
                       target: ".exp-three",
+                      outerStyle: {
+                        background: "url(/cursor/misemind.jpeg)", // Soft blue background
+                        backgroundRepeat: "no-repeat",
+                        backgroundSize: "100% 100%",
+                        backgroundPosition: "center"
+                      },
+                      outerScale: 1.5, // Increase size on hover
+                      innerScale: 0.5, // Slightly increase inner cursor,
+                      innerSize: 0
+                    },
+                    {
+                      target: ".exp-four",
                       outerStyle: {
                         background: "url(/cursor/al_cursor.png)", // Soft blue background
                         backgroundRepeat: "no-repeat",

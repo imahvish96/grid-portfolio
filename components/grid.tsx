@@ -22,7 +22,10 @@ const MyGridLayout = () => {
     { i: "experience", x: 6, y: 9, w: 6, h: 11 }, // Bottom right block
     { i: "email", x: 2, y: 9, w: 4, h: 3 }, // Bottom right block
     { i: "project", x: 0, y: 10, w: 6, h: 8 }, // Bottom right block
-    { i: "14", x: 7, y: 11, w: 6, h: 8 } // Bottom right block
+    { i: "project_two", x: 0, y: 11, w: 6, h: 8 }, // Bottom right block
+    { i: "project_three", x: 7, y: 11, w: 6, h: 8 }, // Bottom right block
+    { i: "project_four", x: 7, y: 11, w: 6, h: 8 }, // Bottom right block
+    { i: "project_five", x: 0, y: 11, w: 6, h: 8 } // Bottom right block
   ];
 
   const aboutLayout = [
@@ -37,15 +40,19 @@ const MyGridLayout = () => {
     { i: "mode", x: 8, y: 5, w: 5, h: 3 }, // Small top-right block
     { i: "cv", x: 8, y: 5, w: 5, h: 3 }, // Small below top-right block
     { i: "experience", x: 6, y: 9, w: 6, h: 11 }, // Bottom right block
-    { i: "project", x: 0, y: 10, w: 6, h: 8 }, // Bottom right block
-    { i: "14", x: 7, y: 11, w: 6, h: 8 } // Bottom right block
+    { i: "project", x: 0, y: 10, w: 6, h: 8 }, // The Movie Box
+    { i: "project_two", x: 0, y: 11, w: 6, h: 8 }, // Hemolink
+    { i: "project_three", x: 8, y: 11, w: 6, h: 8 }, // Inventory management
+    { i: "project_four", x: 0, y: 11, w: 6, h: 8 } // Project management
   ];
   const workLayout = [
     { i: "experience", x: 0, y: 0, w: 6, h: 11 }, // Bottom right block
     { i: "cv", x: 6, y: 0, w: 6, h: 3 }, // Small below top-right block
     { i: "mode", x: 6, y: 0, w: 6, h: 3 }, // Small top-right block
-    { i: "14", x: 7, y: 1, w: 6, h: 8 }, // Bottom right block
-    { i: "project", x: 0, y: 2, w: 6, h: 9 }, // Bottom right block
+    { i: "project_two", x: 0, y: 1, w: 6, h: 8 }, // Hemolink
+    { i: "project_three", x: 9, y: 1, w: 6, h: 8 }, // Inventory management
+    { i: "project_four", x: 7, y: 1, w: 6, h: 8 }, // Project Management
+    { i: "project", x: 0, y: 2, w: 6, h: 9 }, // The Movie Link
     { i: "about", x: 6, y: 2, w: 6, h: 6 }, // Big block at top left
     { i: "linkedin", x: 0, y: 3, w: 2, h: 3 }, // Two small blocks on the left
     { i: "github", x: 2, y: 3, w: 2, h: 3 }, // Bottom left block
@@ -59,7 +66,6 @@ const MyGridLayout = () => {
   const [layout, setLayout] = useState(defaultLayout);
 
   const handleLayoutChange = (key: Key) => {
-    console.log(key);
     if (key === "All") {
       setLayout(defaultLayout);
     } else if (key === "About") {
@@ -79,13 +85,7 @@ const MyGridLayout = () => {
         </Tabs>
       </div>
 
-      <GridLayout
-        className="layout"
-        layout={layout}
-        cols={12} // Defining 12 columns for the grid
-        rowHeight={30} // Each row height is 30px
-        width={1200} // Total width of the layout in pixels
-        isResizable={false}>
+      <GridLayout className="layout" layout={layout} cols={12} rowHeight={30} width={1200} isResizable={false}>
         <div key="about">
           <About />
         </div>
@@ -120,10 +120,31 @@ const MyGridLayout = () => {
           <Experence />
         </div>
         <div key="project">
-          <Project />
+          <Project
+            coverPath="/project/theMovieBox.png"
+            stack={["ReactJs", "CSS", "Material UI", "Axios", "Firebase", "TMDB API"]}
+            title="The Moive Box"
+          />
         </div>
-        <div key="14">
-          <Project />
+        <div key="project_two">
+          <Project coverPath="/project/hemolink.png" stack={["ReactJs", "NodeJs", "ExpressJs", "MongoDB"]} title="Hemolink" />
+        </div>
+        <div key="project_three">
+          <Project
+            coverPath="/project/mi-stock.png"
+            stack={["NextJs", "TailwindCSS", "Redux", "NodeJs", "PostgreSQL", "AWS"]}
+            title="Inventory Management"
+          />
+        </div>
+        <div key="project_four">
+          <Project
+            coverPath="/project/project_management.png"
+            stack={["NextJs", "TailwindCSS", "ChartJs", "Redux", "AWS"]}
+            title="Project Management"
+          />
+        </div>
+        <div key="project_five">
+          <Project coverPath="/project/chimple_learning.png" stack={["ReactJs", "Ionic", "Capacitor", "xAPI", "Firebase"]} title="Chimple Learning" />
         </div>
       </GridLayout>
     </>

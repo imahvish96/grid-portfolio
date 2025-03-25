@@ -6,10 +6,14 @@ import { IoSunnyOutline } from "react-icons/io5";
 import { HiOutlineMoon } from "react-icons/hi2";
 import { useTheme } from "next-themes";
 import clsx from "clsx";
-import { Key } from "react";
+import { Key, useEffect } from "react";
 
 export default function App({ className, classNames }: any) {
   const { setTheme } = useTheme();
+
+  useEffect(() => {
+    setTheme("dark");
+  }, []);
 
   const onChange = (key: Key) => {
     const newTheme = key === "light" ? "light" : "dark";
@@ -18,7 +22,12 @@ export default function App({ className, classNames }: any) {
 
   return (
     <div className={clsx("flex flex-wrap gap-4 w-full h-full", className, classNames?.base)}>
-      <Tabs aria-label="Tabs sizes" className="w-full backdrop-blur-md backdrop-saturate-150 " id={Styles["tabs"]} onSelectionChange={onChange}>
+      <Tabs
+        aria-label="Tabs sizes"
+        className="w-full backdrop-blur-md backdrop-saturate-150 "
+        id={Styles["tabs"]}
+        onSelectionChange={onChange}
+        defaultSelectedKey={"dark"}>
         <Tab
           key="light"
           className={Styles["tab-photos"]}
