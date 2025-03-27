@@ -40,7 +40,6 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       </head>
       <body className={clsx("min-h-screen bg-background font-sans antialiased", fontSans.variable)}>
         <Providers themeProps={{ attribute: "class", defaultTheme: "dark" }}>
-          {/* <BackgroundBeamsWithCollision className="w-full h-full"> */}
           <div aria-hidden="true" className="fixed hidden dark:md:block dark:opacity-70 -bottom-[40%] -left-[20%] z-0">
             <img
               alt="docs left background"
@@ -155,7 +154,6 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             </div>
             <BackgroundBeams />
           </div>
-          {/* </BackgroundBeamsWithCollision> */}
         </Providers>
       </body>
     </html>
