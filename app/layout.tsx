@@ -1,7 +1,6 @@
 /* eslint-disable react/jsx-sort-props */
 import "@/styles/globals.css";
 import { Metadata, Viewport } from "next";
-import AnimatedCursor from "react-animated-cursor";
 
 import clsx from "clsx";
 
@@ -11,6 +10,7 @@ import { siteConfig } from "@/config/site";
 import { fontSans } from "@/config/fonts";
 import CustomCursor from "@/components/customCursor";
 import { BackgroundBeams } from "@/components/ui/background-beams";
+import AnimatedCursorIcon from "@/components/animatedCursor/animatedCursor";
 
 export const metadata: Metadata = {
   title: {
@@ -81,75 +81,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
               className="flex flex-col h-full z-10 w-full
                 ">
               <main className="container mx-auto max-w-7xl pt-16 px-6 flex-grow h-screen overflow-y-scroll scrollbar-hide">{children}</main>
-              <AnimatedCursor
-                innerSize={8}
-                outerSize={35}
-                innerScale={1}
-                outerScale={2}
-                outerAlpha={0}
-                showSystemCursor
-                innerStyle={{
-                  backgroundColor: "var(--cursor-color)"
-                }}
-                outerStyle={{
-                  border: "3px solid var(--cursor-color)"
-                }}
-                clickables={[
-                  "a",
-                  {
-                    target: ".exp-one",
-                    outerStyle: {
-                      background: "url(/cursor/amiti_cursor.jpeg)", // Soft blue background
-                      backgroundRepeat: "no-repeat",
-                      backgroundSize: "100% 100%",
-                      backgroundPosition: "center"
-                    },
-                    outerScale: 1.5, // Increase size on hover
-                    innerScale: 0.5, // Slightly increase inner cursor,
-                    innerSize: 0
-                  },
-                  {
-                    target: ".exp-two",
-                    outerStyle: {
-                      background: "url(/cursor/gsynergy.jpeg)", // Soft blue background
-                      backgroundRepeat: "no-repeat",
-                      backgroundSize: "100% 100%",
-                      backgroundPosition: "center"
-                    },
-                    outerScale: 1.5, // Increase size on hover
-                    innerScale: 0.5, // Slightly increase inner cursor,
-                    innerSize: 0
-                  },
-                  {
-                    target: ".exp-three",
-                    outerStyle: {
-                      background: "url(/cursor/misemind.jpeg)", // Soft blue background
-                      backgroundRepeat: "no-repeat",
-                      backgroundSize: "100% 100%",
-                      backgroundPosition: "center"
-                    },
-                    outerScale: 1.5, // Increase size on hover
-                    innerScale: 0.5, // Slightly increase inner cursor,
-                    innerSize: 0
-                  },
-                  {
-                    target: ".exp-four",
-                    outerStyle: {
-                      background: "url(/cursor/al_cursor.png)", // Soft blue background
-                      backgroundRepeat: "no-repeat",
-                      backgroundSize: "contain",
-                      backgroundPosition: "center",
-                      overflow: "visible",
-                      borderRadius: "0px",
-                      width: "100%",
-                      objectFit: "contain"
-                    },
-                    outerScale: 1.5, // Increase size on hover
-                    innerScale: 0.5, // Slightly increase inner cursor,
-                    innerSize: 0
-                  }
-                ]}
-              />
+              <AnimatedCursorIcon />
               <CustomCursor />
             </div>
             <BackgroundBeams />

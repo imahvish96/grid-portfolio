@@ -1,7 +1,7 @@
 /* eslint-disable padding-line-between-statements */
 import { Card, CardBody, CardFooter, Chip } from "@nextui-org/react";
 
-export default function Project({ coverPath, title, stack }: { coverPath: string; title: string; stack: string[] }) {
+export default function ProjectCard({ coverPath, title, stack }: { coverPath: string; title: string; stack: string[] }) {
   return (
     <Card isBlurred isFooterBlurred className="p-0 h-full">
       <CardBody className="p-0 h-full" style={{ backgroundImage: `url(${coverPath})`, backgroundSize: "cover" }} />

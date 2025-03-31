@@ -2,6 +2,7 @@
 
 import React, { useState, useEffect } from "react";
 import { motion } from "framer-motion";
+
 import Styles from "./style.module.css";
 
 const CursorFollower = () => {
@@ -39,8 +40,11 @@ const CursorFollower = () => {
 
   return (
     <div>
-      {/* Your follower div */}
       <motion.div
+        animate={{
+          y: [0, -10, 0],
+          transform: "rotate(360deg)"
+        }}
         className={Styles["cursor-follower"]}
         style={{
           position: "absolute",
@@ -49,10 +53,6 @@ const CursorFollower = () => {
           translate: "-50% -50%", // Centering the div
           transform: "rotate(360deg)",
           zIndex: -1
-        }}
-        animate={{
-          y: [0, -10, 0], // Floating effect
-          transform: "rotate(360deg)"
         }}
         transition={{
           duration: 3, // Animation duration
