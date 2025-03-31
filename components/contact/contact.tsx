@@ -3,60 +3,25 @@
 import React, { useEffect, useState } from "react";
 import Marquee from "react-fast-marquee";
 import { Card } from "@nextui-org/react";
-import { GoNorthStar } from "react-icons/go";
 import { useTheme } from "next-themes";
 
-const Skills = () => {
+import ContactInfo from "./contactInfo";
+
+const Contact = () => {
   const { theme } = useTheme();
   const [themeShadow, setThemeShadow] = useState<string>();
 
   useEffect(() => {
-    console.log(theme);
     theme === "dark" ? setThemeShadow("#18181b") : setThemeShadow("#fff");
   }, [theme]);
 
   return (
     <Card isBlurred className="h-full border-none bg-background/60 dark:bg-default-100/50">
       <Marquee gradient gradientWidth={80} gradientColor={themeShadow}>
-        <SkillCard />
+        <ContactInfo />
       </Marquee>
     </Card>
   );
 };
 
-export default Skills;
-
-function SkillCard() {
-  const list = [
-    {
-      title: "Hey There",
-      content: "WELCOME TO MY PORTFOLIO– WHERE CREATIVITY MEETS CODING, AND PASSION TURNS INTO DIGITAL SOLUTIONS!."
-    },
-    {
-      title: "Country",
-      content: "India"
-    },
-    {
-      title: "Email",
-      content: "faridi.mahvish@gmail.com"
-    },
-    {
-      title: "Phone",
-      content: "Please Prefer Email"
-    }
-  ];
-
-  return (
-    <div className="flex gap-2 mt-1">
-      {list.map(item => (
-        <div key={item.title} className="flex items-center gap-2">
-          <div className="flex gap-2">
-            <p className="font-bold">{item.title}: </p>
-            <p>{item.content}</p>
-          </div>
-          <GoNorthStar className="text-xs" />
-        </div>
-      ))}
-    </div>
-  );
-}
+export default Contact;
