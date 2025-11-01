@@ -29,6 +29,8 @@ export const viewport: Viewport = {
   ]
 };
 
+const bodyClass = `${fontSans.variable} min-h-screen bg-background font-sans antialiased`;
+
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html suppressHydrationWarning lang="en">
@@ -37,7 +39,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
         <link href="https://fonts.googleapis.com/css2?family=Didact+Gothic&family=Roboto&display=swap" rel="stylesheet" />
       </head>
-      <body className={clsx("min-h-screen bg-background font-sans antialiased", fontSans.variable)}>
+      <body className={bodyClass}>
         <Providers themeProps={{ attribute: "class", defaultTheme: "dark" }}>
           <div aria-hidden="true" className="fixed hidden dark:md:block dark:opacity-70 -bottom-[40%] -left-[20%] z-0">
             <img
