@@ -1,5 +1,3 @@
-"use client";
-
 import { Card } from "@nextui-org/react";
 import { MY_OVERVIEW, MY_NAME, MY_TITLE } from "@/constants";
 
