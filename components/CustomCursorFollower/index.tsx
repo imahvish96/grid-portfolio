@@ -5,7 +5,7 @@ import { motion } from "framer-motion";
 
 import Styles from "./style.module.css";
 
-const CursorFollower = () => {
+const CustomCursorFollower = () => {
   const [position, setPosition] = useState({ x: 0, y: 0 });
   const [followerPosition, setFollowerPosition] = useState({ x: 0, y: 0 });
 
@@ -64,4 +64,4 @@ const CursorFollower = () => {
   );
 };
 
-export default CursorFollower;
+export default CustomCursorFollower;

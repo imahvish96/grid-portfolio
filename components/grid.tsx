@@ -7,19 +7,18 @@ import { IoLogoGithub, IoMailOpenOutline } from "react-icons/io5";
 import { FaXTwitter } from "react-icons/fa6";
 import { Tab, Tabs } from "@nextui-org/react";
 
-import SocialCard from "./social/socialCard";
-import Cards from "./ui/card";
+import SocialCard from "./SocialCard";
+import LocationCard from "./LocationCard";
 
 import { Contact, About, Toggler, SkillsCard, ProjectCard, ExperienceCard, ResumeDownloadCard } from "./";
 
-import { DEFAULT_LAYOUT, WORK_LAYOUT, ABOUT_LAYOUT } from "@/config/gridLayout";
-
+import { HOME_LAYOUT, EXP_LAYOUT, ABOUT_LAYOUT } from "@/config/layout";
 import "react-resizable/css/styles.css";
 import "react-grid-layout/css/styles.css";
 import { PROJECT } from "@/constants";
 
 const MyGridLayout = () => {
-  const [layout, setLayout] = useState({ layoutType: "defalut", layout: DEFAULT_LAYOUT });
+  const [layout, setLayout] = useState({ layoutType: "defalut", layout: HOME_LAYOUT });
 
   const handleLayoutChange = (key: Key) => {
     switch (key) {
@@ -27,13 +26,38 @@ const MyGridLayout = () => {
         setLayout({ layoutType: "about", layout: ABOUT_LAYOUT });
         break;
       case "Experience":
-        setLayout({ layoutType: "work", layout: WORK_LAYOUT });
+        setLayout({ layoutType: "exp", layout: EXP_LAYOUT });
         break;
       default:
-        setLayout({ layoutType: "defalut", layout: DEFAULT_LAYOUT });
+        setLayout({ layoutType: "home", layout: HOME_LAYOUT });
         break;
     }
   };
+
+  const SOCIALS = [
+    {
+      key: "linkedin",
+      href: "https://www.linkedin.com/in/faridi-mahvish/",
+      icon: <CiLinkedin className="w-[75%] h-[75%]" />
+    },
+    {
+      key: "github",
+      href: "https://github.com/imahvish96",
+      icon: <IoLogoGithub className="w-[75%] h-[75%]" />
+    },
+    {
+      key: "twitter",
+      href: "https://x.com/FaridiSanu72858",
+      icon: <FaXTwitter className="w-[65%] h-[65%]" />
+    },
+    {
+      key: "email",
+      href: "mailto:mahvishfaridi96@gmail.com",
+      icon: <IoMailOpenOutline className="w-[85%] h-[85%]" />
+    }
+  ];
+
+  const isExp = layout.layoutType === "exp";
 
   return (
     <>
@@ -46,102 +70,47 @@ const MyGridLayout = () => {
       </div>
 
       <GridLayout className="layout" cols={12} isResizable={false} layout={layout.layout} rowHeight={30} width={1200}>
-        {layout.layoutType !== "work" && (
+        {!isExp && [
           <div key="about">
             <About />
-          </div>
-        )}
-        {layout.layoutType !== "work" && (
+          </div>,
           <div key="contact">
             <Contact />
-          </div>
-        )}
-        {layout.layoutType !== "work" && (
+          </div>,
           <div key="map">
-            <Cards />
-          </div>
-        )}
-        <div key="mode">
-          <Toggler />
-        </div>
-        <div key="cv">
-          <ResumeDownloadCard />
-        </div>
-
-        {layout.layoutType !== "work" && (
-          <div key="linkedin">
-            <SocialCard hrefLink="https://www.linkedin.com/in/faridi-mahvish/" target="_blank">
-              <CiLinkedin className="w-[75%] h-[75%]" />
-            </SocialCard>
-          </div>
-        )}
-
-        {layout.layoutType !== "work" && (
-          <div key="github">
-            <SocialCard hrefLink="https://github.com/imahvish96" target="_blank">
-              <IoLogoGithub className="w-[75%] h-[75%]" />
-            </SocialCard>
-          </div>
-        )}
-
-        {layout.layoutType !== "work" && (
-          <div key="twitter">
-            <SocialCard hrefLink="https://x.com/FaridiSanu72858" target="_blank">
-              <FaXTwitter className="w-[65%] h-[65%]" />
-            </SocialCard>
-          </div>
-        )}
-        {layout.layoutType !== "work" && (
-          <div key="email">
-            <SocialCard hrefLink="mailto:mahvishfaridi96@gmail.com">
-              <IoMailOpenOutline className="w-[85%] h-[85%]" />
-            </SocialCard>
-          </div>
-        )}
-        {layout.layoutType !== "work" && (
+            <LocationCard />
+          </div>,
           <div key="skills">
             <SkillsCard />
           </div>
-        )}
+        ]}
+
+        <div key="mode">
+          <Toggler />
+        </div>
+
+        {!isExp &&
+          SOCIALS.map(social => (
+            <div key={social.key}>
+              <SocialCard hrefLink={social.href} target="_blank">
+                {social.icon}
+              </SocialCard>
+            </div>
+          ))}
+
         <div key="experience">
           <ExperienceCard />
         </div>
+
         {PROJECT.map(project => (
           <div key={project.key}>
             <ProjectCard coverPath={project.coverPath} stack={project.stack} title={project.title} />
           </div>
         ))}
-        {/* <div key="project">
-          <ProjectCard
-            coverPath="/project/theMovieBox.png"
-            stack={["ReactJs", "CSS", "Material UI", "Axios", "Firebase", "TMDB API"]}
-            title="The Moive Box"
-          />
+
+        <div key="cv">
+          <ResumeDownloadCard />
         </div>
-        <div key="project_two">
-          <ProjectCard coverPath="/project/hemolink.png" stack={["ReactJs", "NodeJs", "ExpressJs", "MongoDB"]} title="Hemolink" />
-        </div>
-        <div key="project_three">
-          <ProjectCard
-            coverPath="/project/mi-stock.png"
-            stack={["NextJs", "TailwindCSS", "Redux", "NodeJs", "PostgreSQL", "AWS"]}
-            title="Inventory Management"
-          />
-        </div>
-        <div key="project_four">
-          <ProjectCard
-            coverPath="/project/project_management.png"
-            stack={["NextJs", "TailwindCSS", "ChartJs", "Redux", "AWS"]}
-            title="Project Management"
-          />
-        </div>
-        <div key="project_five">
-          <ProjectCard
-            coverPath="/project/chimple_learning.png"
-            stack={["ReactJs", "Ionic", "Capacitor", "xAPI", "Firebase"]}
-            title="Chimple Learning"
-          />
-        </div> */}
       </GridLayout>
     </>
   );

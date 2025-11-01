@@ -1,4 +1,4 @@
-export const DEFAULT_LAYOUT = [
+export const HOME_LAYOUT = [
   { i: "about", x: 0, y: 0, w: 5, h: 7 },
   { i: "contact", x: 5, y: 0, w: 7, h: 1 },
   { i: "map", x: 5, y: 1, w: 3, h: 6 },
@@ -35,7 +35,7 @@ export const ABOUT_LAYOUT = [
   { i: "projectProjectManagement", x: 0, y: 11, w: 6, h: 8 },
   { i: "projectChimpleLearning", x: 8, y: 11, w: 6, h: 8 }
 ];
-export const WORK_LAYOUT = [
+export const EXP_LAYOUT = [
   { i: "experience", x: 0, y: 0, w: 6, h: 11 },
   { i: "cv", x: 6, y: 0, w: 6, h: 3 },
   { i: "mode", x: 6, y: 0, w: 6, h: 3 },

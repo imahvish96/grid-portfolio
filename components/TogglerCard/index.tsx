@@ -1,12 +1,13 @@
 "use client";
 
+import { Key, useEffect } from "react";
 import { Tabs, Tab } from "@nextui-org/react";
-import Styles from "./style.module.css";
-import { IoSunnyOutline } from "react-icons/io5";
 import { HiOutlineMoon } from "react-icons/hi2";
+import { IoSunnyOutline } from "react-icons/io5";
 import { useTheme } from "next-themes";
 import clsx from "clsx";
-import { Key, useEffect } from "react";
+
+import Styles from "./style.module.css";
 
 export default function App({ className, classNames }: any) {
   const { setTheme } = useTheme();
@@ -17,6 +18,7 @@ export default function App({ className, classNames }: any) {
 
   const onChange = (key: Key) => {
     const newTheme = key === "light" ? "light" : "dark";
+
     setTheme(newTheme);
   };
 
@@ -25,9 +27,9 @@ export default function App({ className, classNames }: any) {
       <Tabs
         aria-label="Tabs sizes"
         className="w-full backdrop-blur-md backdrop-saturate-150 "
+        defaultSelectedKey={"dark"}
         id={Styles["tabs"]}
-        onSelectionChange={onChange}
-        defaultSelectedKey={"dark"}>
+        onSelectionChange={onChange}>
         <Tab
           key="light"
           className={Styles["tab-photos"]}

@@ -1,10 +1,11 @@
 "use client";
 
-import Marquee from "react-fast-marquee";
-import { Card, Image } from "@nextui-org/react";
-import { useTheme } from "next-themes";
 import { useEffect, useState } from "react";
-import SkillList from "./skillsList";
+import { useTheme } from "next-themes";
+import { Card } from "@nextui-org/react";
+import Marquee from "react-fast-marquee";
+
+import SkillList from "./SkillsList";
 
 const SkillsCard = () => {
   const { theme } = useTheme();

@@ -8,9 +8,8 @@ import { Providers } from "./providers";
 
 import { siteConfig } from "@/config/site";
 import { fontSans } from "@/config/fonts";
-import CustomCursor from "@/components/customCursor";
-import { BackgroundBeams } from "@/components/ui/background-beams";
-import AnimatedCursorIcon from "@/components/animatedCursor/animatedCursor";
+import CustomCursor from "@/components/CustomCursorFollower";
+import AnimatedCursorIcon from "@/components/AnimatedCursor";
 
 export const metadata: Metadata = {
   title: {
@@ -84,7 +83,6 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
               <AnimatedCursorIcon />
               <CustomCursor />
             </div>
-            <BackgroundBeams />
           </div>
         </Providers>
       </body>

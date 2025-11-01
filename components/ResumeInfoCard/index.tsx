@@ -3,7 +3,7 @@ import { FiEye, FiDownload } from "react-icons/fi";
 
 import { CV, CV_PATH, CV_TITLE } from "@/constants";
 
-export default function ResumeDownloadCard() {
+export default function ResumeInfoCard() {
   return (
     <Card isBlurred className="py-4 h-full border-none bg-background/60 dark:bg-default-100/50">
       <CardBody className="px-8">
