@@ -1,8 +1,9 @@
 const MY_OVERVIEW =
-  "A dedicated software engineer skilled in React, Node.js, JavaScript, and TypeScript, I specialize in building high-performance web applications. Passionate about tackling challenges, I’m eager to contribute to innovative projects and drive impactful solutions. Ready to elevate your team?";
-const MY_NAME = "Mahvish Faridi";
-const MY_TITLE = "Software Engineer";
-const YEARS_OF_EXPERIENCE = "FIVE";
+  "A dedicated Software Engineer skilled in React, Node.js, JavaScript, and TypeScript, I specialize in building scalable, high-performance web applications. Passionate about solving complex problems, writing clean code, and delivering impactful solutions, I thrive on turning ideas into reliable, user-focused products.";
+const MY_FIRST_NAME = "Mahvish";
+const MY_LAST_NAME = "Faridi";
+const MY_TITLE = "Senior Software Engineer";
+const YEARS_OF_EXPERIENCE = "5";
 const YEARS_OF_EXPERIENCE_TITLE = "Years of Experience";
 const CV = "2025 CV";
 const CV_TITLE = "Resume";
@@ -185,7 +186,8 @@ const PROJECT = [
 
 export {
   MY_OVERVIEW,
-  MY_NAME,
+  MY_FIRST_NAME,
+  MY_LAST_NAME,
   MY_TITLE,
   CONTACT_INFORMATION,
   YEARS_OF_EXPERIENCE,

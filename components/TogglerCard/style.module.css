@@ -9,10 +9,8 @@ div#tabs > div[data-slot="tabList"] > button{
 }
 
 .tab-photos > div[data-slot="tabContent"] {
-    width: 30%;
-}
-
-.tab-photos > div:hover {
-    transform: rotate(360deg);
-    transition: all 0.5s ease-out;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
 }

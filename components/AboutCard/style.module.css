@@ -1,0 +1,146 @@
+.lastName {
+  position: relative;
+  display: inline-block;
+  cursor: default;
+  background: linear-gradient(90deg, #22c55e, #06b6d4, #8b5cf6, #22c55e);
+  background-size: 300% 100%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+  animation: gradientMove 4s ease infinite;
+}
+
+@keyframes gradientMove {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+/* Chromatic-aberration ghost layers (hidden until hover) */
+.lastName::before,
+.lastName::after {
+  content: attr(data-text);
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  pointer-events: none;
+  mix-blend-mode: screen;
+}
+
+.lastName::before {
+  -webkit-text-fill-color: #06b6d4; /* cyan ghost */
+  color: #06b6d4;
+}
+
+.lastName::after {
+  -webkit-text-fill-color: #ec4899; /* magenta ghost */
+  color: #ec4899;
+}
+
+.lastName:hover::before {
+  opacity: 0.9;
+  animation: glitchCyan 0.6s steps(2, end) infinite;
+}
+
+.lastName:hover::after {
+  opacity: 0.9;
+  animation: glitchMagenta 0.6s steps(2, end) infinite;
+}
+
+/* cyan layer: jitters left, slicing through different scanlines */
+@keyframes glitchCyan {
+  0% {
+    transform: translate(0, 0);
+    clip-path: inset(0 0 0 0);
+  }
+  20% {
+    transform: translate(-3px, -1px);
+    clip-path: inset(10% 0 70% 0);
+  }
+  40% {
+    transform: translate(-4px, 1px);
+    clip-path: inset(45% 0 35% 0);
+  }
+  60% {
+    transform: translate(-2px, 0);
+    clip-path: inset(70% 0 10% 0);
+  }
+  80% {
+    transform: translate(-3px, 2px);
+    clip-path: inset(25% 0 55% 0);
+  }
+  100% {
+    transform: translate(0, 0);
+    clip-path: inset(0 0 0 0);
+  }
+}
+
+/* magenta layer: jitters right, opposite slices */
+@keyframes glitchMagenta {
+  0% {
+    transform: translate(0, 0);
+    clip-path: inset(0 0 0 0);
+  }
+  20% {
+    transform: translate(3px, 1px);
+    clip-path: inset(60% 0 20% 0);
+  }
+  40% {
+    transform: translate(4px, -1px);
+    clip-path: inset(20% 0 60% 0);
+  }
+  60% {
+    transform: translate(2px, 0);
+    clip-path: inset(80% 0 5% 0);
+  }
+  80% {
+    transform: translate(3px, -2px);
+    clip-path: inset(35% 0 45% 0);
+  }
+  100% {
+    transform: translate(0, 0);
+    clip-path: inset(0 0 0 0);
+  }
+}
+
+/* subtle shake on the main text while hovering */
+.lastName:hover {
+  animation: gradientMove 4s ease infinite, glitchShake 0.3s steps(2, end) infinite;
+}
+
+@keyframes glitchShake {
+  0% {
+    transform: translate(0, 0);
+  }
+  25% {
+    transform: translate(1px, -1px);
+  }
+  50% {
+    transform: translate(-1px, 1px);
+  }
+  75% {
+    transform: translate(1px, 1px);
+  }
+  100% {
+    transform: translate(0, 0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .lastName,
+  .lastName:hover,
+  .lastName:hover::before,
+  .lastName:hover::after {
+    animation: none;
+  }
+}

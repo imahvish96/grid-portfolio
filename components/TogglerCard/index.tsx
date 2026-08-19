@@ -1,16 +1,19 @@
 "use client";
 
-import { Key, useEffect } from "react";
+import { Key, useEffect, useRef } from "react";
 import { Tabs, Tab } from "@nextui-org/react";
-import { HiOutlineMoon } from "react-icons/hi2";
-import { IoSunnyOutline } from "react-icons/io5";
+import { SunIcon, MoonIcon } from "@animateicons/react/lucide";
 import { useTheme } from "next-themes";
 import clsx from "clsx";
 
 import Styles from "./style.module.css";
 
+type IconHandle = { startAnimation: () => void; stopAnimation: () => void };
+
 export default function App({ className, classNames }: any) {
   const { setTheme } = useTheme();
+  const sunRef = useRef<IconHandle>(null);
+  const moonRef = useRef<IconHandle>(null);
 
   useEffect(() => {
     setTheme("dark");
@@ -22,8 +25,18 @@ export default function App({ className, classNames }: any) {
     setTheme(newTheme);
   };
 
+  const startAll = () => {
+    sunRef.current?.startAnimation();
+    moonRef.current?.startAnimation();
+  };
+
+  const stopAll = () => {
+    sunRef.current?.stopAnimation();
+    moonRef.current?.stopAnimation();
+  };
+
   return (
-    <div className={clsx("flex flex-wrap gap-4 w-full h-full", className, classNames?.base)}>
+    <div className={clsx("flex flex-wrap gap-4 w-full h-full", className, classNames?.base)} onMouseEnter={startAll} onMouseLeave={stopAll}>
       <Tabs
         aria-label="Tabs sizes"
         className="w-full backdrop-blur-md backdrop-saturate-150 "
@@ -35,7 +48,7 @@ export default function App({ className, classNames }: any) {
           className={Styles["tab-photos"]}
           title={
             <div className="flex items-center justify-center w-full h-full sunny">
-              <IoSunnyOutline className="w-[75%] h-[75%]" />
+              <SunIcon ref={sunRef} size={34} />
             </div>
           }
         />
@@ -44,7 +57,7 @@ export default function App({ className, classNames }: any) {
           className={Styles["tab-photos"]}
           title={
             <div className="flex items-center justify-center w-full h-full moon">
-              <HiOutlineMoon className="w-[70%] h-[70%]" />
+              <MoonIcon ref={moonRef} size={32} />
             </div>
           }
         />

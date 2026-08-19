@@ -17,7 +17,7 @@ html.dark-mode {
 html,
 body {
   cursor: auto; /* Ensures the system cursor is visible */
-  font-family: "Didact Gothic", sans-serif;
+  font-family: var(--font-sans), "Space Grotesk", sans-serif;
   font-weight: 400;
   font-style: normal;
 }

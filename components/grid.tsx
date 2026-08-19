@@ -1,14 +1,14 @@
 "use client";
 
-import React, { Key, useState } from "react";
+import { Key, useState } from "react";
 import GridLayout from "react-grid-layout";
-import { CiLinkedin } from "react-icons/ci";
-import { IoLogoGithub, IoMailOpenOutline } from "react-icons/io5";
-import { FaXTwitter } from "react-icons/fa6";
+import { LinkedinIcon, GithubIcon, TwitterIcon, HouseIcon, UserIcon, FolderIcon } from "@animateicons/react/lucide";
 import { Tab, Tabs } from "@nextui-org/react";
 
 import SocialCard from "./SocialCard";
+import MailCard from "./MailCard";
 import LocationCard from "./LocationCard";
+import AnimatedTabLabel from "./AnimatedTabLabel";
 
 import { Contact, About, Toggler, SkillsCard, ProjectCard, ExperienceCard, ResumeDownloadCard } from "./";
 
@@ -16,8 +16,12 @@ import { HOME_LAYOUT, EXP_LAYOUT, ABOUT_LAYOUT } from "@/config/layout";
 import "react-resizable/css/styles.css";
 import "react-grid-layout/css/styles.css";
 import { PROJECT } from "@/constants";
+import { Information, Project, Experience } from "@/lib/api";
 
-const MyGridLayout = () => {
+// grid layout is keyed by these ids, so map API projects onto them in order
+const PROJECT_KEYS = ["projectMovieBox", "projectHemolink", "projectInventoryManagement", "projectProjectManagement", "projectChimpleLearning"];
+
+const MyGridLayout = ({ info, projects, experience }: { info: Information | null; projects: Project[]; experience: Experience[] }) => {
   const [layout, setLayout] = useState({ layoutType: "defalut", layout: HOME_LAYOUT });
 
   const handleLayoutChange = (key: Key) => {
@@ -34,28 +38,19 @@ const MyGridLayout = () => {
     }
   };
 
+  const email = info?.email ?? "mahvishfaridi96@gmail.com";
+
   const SOCIALS = [
-    {
-      key: "linkedin",
-      href: "https://www.linkedin.com/in/faridi-mahvish/",
-      icon: <CiLinkedin className="w-[75%] h-[75%]" />
-    },
-    {
-      key: "github",
-      href: "https://github.com/imahvish96",
-      icon: <IoLogoGithub className="w-[75%] h-[75%]" />
-    },
-    {
-      key: "twitter",
-      href: "https://x.com/FaridiSanu72858",
-      icon: <FaXTwitter className="w-[65%] h-[65%]" />
-    },
-    {
-      key: "email",
-      href: "mailto:mahvishfaridi96@gmail.com",
-      icon: <IoMailOpenOutline className="w-[85%] h-[85%]" />
-    }
+    { key: "linkedin", href: "https://www.linkedin.com/in/faridi-mahvish/", brand: "#0A66C2", Icon: LinkedinIcon },
+    { key: "github", href: "https://github.com/imahvish96", brand: "#8b5cf6", Icon: GithubIcon },
+    { key: "twitter", href: "https://x.com/FaridiSanu72858", brand: "#1d9bf0", Icon: TwitterIcon },
+    { key: "email", href: `mailto:${email}`, brand: "#f31260", Icon: null }
   ];
+
+  // normalise projects: API when available, otherwise fall back to constants
+  const projectItems = projects.length
+    ? projects.map(p => ({ title: p.project_name, description: p.description, stack: p.tech_used, coverPath: p.image_url, link: p.live_link }))
+    : PROJECT.map(p => ({ title: p.title, description: p.description, stack: p.stack, coverPath: p.coverPath, link: p.link }));
 
   const isExp = layout.layoutType === "exp";
 
@@ -63,25 +58,25 @@ const MyGridLayout = () => {
     <>
       <div className="w-full flex justify-center mb-5 flex-col items-center z-50">
         <Tabs radius="lg" onSelectionChange={handleLayoutChange}>
-          <Tab key="All">Home</Tab>
-          <Tab key="About">About</Tab>
-          <Tab key="Experience">Project</Tab>
+          <Tab key="All" title={<AnimatedTabLabel Icon={HouseIcon} label="Home" />} />
+          <Tab key="About" title={<AnimatedTabLabel Icon={UserIcon} label="About" />} />
+          <Tab key="Experience" title={<AnimatedTabLabel Icon={FolderIcon} label="Project" />} />
         </Tabs>
       </div>
 
       <GridLayout className="layout" cols={12} isResizable={false} layout={layout.layout} rowHeight={30} width={1200}>
         {!isExp && [
           <div key="about">
-            <About />
+            <About overview={info?.profile_summary} />
           </div>,
           <div key="contact">
-            <Contact />
+            <Contact email={info?.email} message={info?.message} />
           </div>,
           <div key="map">
             <LocationCard />
           </div>,
           <div key="skills">
-            <SkillsCard />
+            <SkillsCard skills={info?.skills} />
           </div>
         ]}
 
@@ -92,24 +87,32 @@ const MyGridLayout = () => {
         {!isExp &&
           SOCIALS.map(social => (
             <div key={social.key}>
-              <SocialCard hrefLink={social.href} target="_blank">
-                {social.icon}
-              </SocialCard>
+              {social.key === "email" ? (
+                <MailCard brand={social.brand} hrefLink={social.href} target="_blank" />
+              ) : (
+                <SocialCard Icon={social.Icon!} brand={social.brand} hrefLink={social.href} target="_blank" />
+              )}
             </div>
           ))}
 
         <div key="experience">
-          <ExperienceCard />
+          <ExperienceCard experiences={experience} />
         </div>
 
-        {PROJECT.map(project => (
-          <div key={project.key}>
-            <ProjectCard coverPath={project.coverPath} stack={project.stack} title={project.title} />
+        {projectItems.slice(0, PROJECT_KEYS.length).map((project, i) => (
+          <div key={PROJECT_KEYS[i]}>
+            <ProjectCard
+              coverPath={project.coverPath}
+              description={project.description}
+              link={project.link}
+              stack={project.stack}
+              title={project.title}
+            />
           </div>
         ))}
 
         <div key="cv">
-          <ResumeDownloadCard />
+          <ResumeDownloadCard resumeUrl={info?.resume_url} />
         </div>
       </GridLayout>
     </>

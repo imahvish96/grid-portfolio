@@ -1,19 +1,20 @@
 import { Card } from "@nextui-org/card";
-import { Image } from "@nextui-org/react";
+import Image from "next/image";
 
 import { TECHNOLOGIES } from "@/constants";
 
-export default function SkillList() {
+export default function SkillList({ skills }: { skills?: string[] }) {
+  const items = skills && skills.length ? skills : TECHNOLOGIES.map(tech => tech.img);
+
   return (
-    <div className="flex gap-2 mx-1 mt-12">
-      {TECHNOLOGIES.map(tech => (
+    <div className="flex gap-2 mx-1">
+      {items.map((src, i) => (
         <Card
-          key={tech.title}
-          isBlurred
-          className="flex justify-center items-center h-[80px] w-[80px] overflow-visible border-gray-600 bg-background/60 dark:bg-default-100/50"
-          shadow="sm">
-          <div className="flex justify-center items-center h-[50px] w-[50px]">
-            <Image alt={tech.title} className="object-contain overflow-visible" height="60px" src={tech.img} width="60px" />
+          key={`${src}-${i}`}
+          className="flex justify-center items-center h-[56px] w-[56px] overflow-visible bg-transparent border-none"
+          shadow="none">
+          <div className="flex justify-center items-center h-[36px] w-[36px]">
+            <Image alt={`skill-${i}`} className="object-contain" height={40} src={src} width={40} />
           </div>
         </Card>
       ))}

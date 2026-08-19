@@ -3,16 +3,16 @@
 import { GoNorthStar } from "react-icons/go";
 
 import { CONTACT_INFORMATION } from "@/constants";
-function ContactInfo() {
+function ContactInfo({ items }: { items?: { title: string; content: string }[] }) {
+  const list = items && items.length ? items : CONTACT_INFORMATION;
+
   return (
-    <div className="flex gap-2 mt-1">
-      {CONTACT_INFORMATION.map(item => (
-        <div key={item.title} className="flex items-center gap-2">
-          <div className="flex gap-2">
-            <p className="font-bold">{item.title}: </p>
-            <p>{item.content}</p>
-          </div>
-          <GoNorthStar className="text-xs" />
+    <div className="flex items-center mt-1">
+      {list.map(item => (
+        <div key={item.title} className="flex items-center whitespace-nowrap">
+          <p className="font-bold">{item.title}:&nbsp;</p>
+          <p>{item.content}</p>
+          <GoNorthStar className="text-xs mx-4 shrink-0 text-default-400" />
         </div>
       ))}
     </div>

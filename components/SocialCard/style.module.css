@@ -1,0 +1,46 @@
+.card {
+  position: relative;
+  transition: box-shadow 0.3s ease, transform 0.3s ease;
+}
+
+/* brand-tinted overlay that fades in on hover */
+.card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: var(--brand);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  pointer-events: none;
+}
+
+.card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 0 0 1px color-mix(in srgb, var(--brand) 45%, transparent),
+    0 10px 30px -8px color-mix(in srgb, var(--brand) 55%, transparent);
+}
+
+.card:hover::before {
+  opacity: 0.12;
+}
+
+/* icons pick up the brand color on hover */
+.icon {
+  display: inline-flex;
+  transition: color 0.3s ease;
+}
+
+.card:hover .icon {
+  color: var(--brand);
+}
+
+/* mail card's icon box */
+.iconBox {
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.card:hover .iconBox {
+  background-color: color-mix(in srgb, var(--brand) 20%, transparent);
+  color: var(--brand);
+}

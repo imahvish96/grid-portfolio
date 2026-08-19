@@ -47,7 +47,7 @@ const CustomCursorFollower = () => {
         }}
         className={Styles["cursor-follower"]}
         style={{
-          position: "absolute",
+          position: "fixed",
           top: followerPosition.y,
           left: followerPosition.x,
           translate: "-50% -50%", // Centering the div

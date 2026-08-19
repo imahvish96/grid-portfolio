@@ -8,8 +8,9 @@ import { Providers } from "./providers";
 
 import { siteConfig } from "@/config/site";
 import { fontSans } from "@/config/fonts";
-import CustomCursor from "@/components/CustomCursorFollower";
+// import CustomCursor from "@/components/CustomCursorFollower";
 import AnimatedCursorIcon from "@/components/AnimatedCursor";
+import AuroraBackground from "@/components/AuroraBackground";
 
 export const metadata: Metadata = {
   title: {
@@ -29,7 +30,7 @@ export const viewport: Viewport = {
   ]
 };
 
-const bodyClass = `${fontSans.variable} min-h-screen bg-background font-sans antialiased`;
+const bodyClass = `${fontSans.variable} min-h-screen bg-background font-sans antialiased scrollbar-hide`;
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
@@ -37,11 +38,11 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       <head>
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
-        <link href="https://fonts.googleapis.com/css2?family=Didact+Gothic&family=Roboto&display=swap" rel="stylesheet" />
       </head>
       <body className={bodyClass}>
         <Providers themeProps={{ attribute: "class", defaultTheme: "dark" }}>
-          <div aria-hidden="true" className="fixed hidden dark:md:block dark:opacity-70 -bottom-[40%] -left-[20%] z-0">
+          <AuroraBackground />
+          <div aria-hidden="true" className="fixed hidden dark:md:block dark:opacity-70 -bottom-[40%] -left-[20%] z-0 pointer-events-none">
             <img
               alt="docs left background"
               className="relative z-10 opacity-0 shadow-black/5 data-[loaded=true]:opacity-100 shadow-none transition-transform-opacity motion-reduce:transition-none !duration-300 rounded-large"
@@ -75,16 +76,12 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             )`
             }}
           />
-          <div
-            className="flex items-center justify-center w-full flex-col px-4 h-full
-            ">
-            <div
-              className="flex flex-col h-full z-10 w-full
-                ">
-              <main className="container mx-auto max-w-7xl pt-16 px-6 flex-grow h-screen overflow-y-scroll scrollbar-hide">{children}</main>
-              <AnimatedCursorIcon />
-              <CustomCursor />
-            </div>
+          <div className="relative z-10 flex w-full flex-col">
+            <main className="w-full pt-16 px-6">
+              <div className="container mx-auto max-w-7xl">{children}</div>
+            </main>
+            <AnimatedCursorIcon />
+            {/* <CustomCursor /> */}
           </div>
         </Providers>
       </body>
