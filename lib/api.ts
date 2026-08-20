@@ -27,7 +27,8 @@ export type Experience = {
   is_current: boolean;
 };
 
-const BASE = process.env.API_BASE_URL ?? "http://127.0.0.1:8000/api/v1";
+// strip any trailing slash so `${BASE}${path}` never produces a double slash
+const BASE = (process.env.API_BASE_URL ?? "http://127.0.0.1:8000/api/v1").replace(/\/+$/, "");
 
 // every endpoint wraps the payload in { ...meta, data }, so unwrap `data`.
 async function getData<T>(path: string): Promise<T | null> {
